@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Barbería{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="text-center"><i class="bi bi-scissors"></i> Sistema de Gestión de Citas - Barbería</h1>
+        <p class="text-center text-muted">Bienvenido, {{ user.username }}</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3 mb-4">
+        <div class="card stat-card">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-people text-primary"></i> Clientes</h5>
+                <h2 class="card-text">{{ total_clientes }}</h2>
+                <a href="{% url 'cliente_list' %}" class="btn btn-sm btn-outline-primary">Ver Clientes</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card stat-card">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-person-badge text-success"></i> Barberos</h5>
+                <h2 class="card-text">{{ total_barberos }}</h2>
+                <a href="{% url 'barbero_list' %}" class="btn btn-sm btn-outline-success">Ver Barberos</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card stat-card">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-list-check text-info"></i> Servicios</h5>
+                <h2 class="card-text">{{ total_servicios }}</h2>
+                <a href="{% url 'servicio_list' %}" class="btn btn-sm btn-outline-info">Ver Servicios</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card stat-card">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-calendar-check text-warning"></i> Citas</h5>
+                <h2 class="card-text">{{ total_citas }}</h2>
+                <a href="{% url 'cita_list' %}" class="btn btn-sm btn-outline-warning">Ver Citas</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-clock"></i> Citas Pendientes</h5>
+            </div>
+            <div class="card-body">
+                <h3 class="text-center">{{ citas_pendientes }}</h3>
+                <p class="text-center text-muted">Citas pendientes de atención</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0"><i class="bi bi-info-circle"></i> Acciones Rápidas</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="{% url 'cliente_create' %}" class="btn btn-outline-primary">
+                        <i class="bi bi-person-plus"></i> Nuevo Cliente
+                    </a>
+                    <a href="{% url 'barbero_create' %}" class="btn btn-outline-success">
+                        <i class="bi bi-person-badge"></i> Nuevo Barbero
+                    </a>
+                    <a href="{% url 'servicio_create' %}" class="btn btn-outline-info">
+                        <i class="bi bi-plus-circle"></i> Nuevo Servicio
+                    </a>
+                    <a href="{% url 'cita_create' %}" class="btn btn-outline-warning">
+                        <i class="bi bi-calendar-plus"></i> Nueva Cita
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
